@@ -1,0 +1,107 @@
+<div class="content">
+   
+    <div class="grid grid-cols-12 gap-6 mt-8">
+        <div class="col-span-12 lg:col-span-3 xxl:col-span-2" style="padding: 1rem;border-radius: 1rem;background: white;margin-top: 1rem;">
+            <h2 class="intro-y text-lg font-medium mr-auto mt-2" >
+                Filters
+            </h2>
+            <h6 class="intro-y text-lg  mr-auto mt-2" style="text-align: center;">
+                Launch Year
+            </h6>
+            <div class="grid grid-cols-12 gap-2 mt-2">
+                <div *ngFor="let year of _years$" class="intro-y col-span-6 sm:col-span-6 md:col-span-6 xxl:col-span-6 filter-button" style="text-align: center;">
+                   <button (click)="filter$(year,'launch_year')"> <strong>{{year}}</strong></button>
+                </div>
+            </div>
+            <h6 class="intro-y text-lg  mr-auto mt-2" style="text-align: center;">
+               Successfull Launch
+            </h6>
+            <div class="grid grid-cols-12 gap-2 mt-2">
+                <div class="intro-y col-span-6 sm:col-span-6 md:col-span-6 xxl:col-span-6 filter-button" style="text-align: center;">
+                    <button (click)="filter$(true,'launch_success')"><strong>True</strong></button>
+                </div>
+                <div class="intro-y col-span-6 sm:col-span-6 md:col-span-6 xxl:col-span-6 filter-button" style="text-align: center;">
+                    <button (click)="filter$(false,'launch_success')"><strong>False</strong></button>
+                </div>
+            </div>
+            <h6 class="intro-y text-lg  mr-auto mt-2" style="text-align: center;">
+                Successfull Landing
+             </h6>
+             <div class="grid grid-cols-12 gap-2 mt-2">
+                 <div class="intro-y col-span-6 sm:col-span-6 md:col-span-6 xxl:col-span-6 filter-button" style="text-align: center;">
+                    <button (click)="filter$(true,'land_success')"> <strong>True</strong></button>
+                 </div>
+                 <div class="intro-y col-span-6 sm:col-span-6 md:col-span-6 xxl:col-span-6 filter-button" style="text-align: center;">
+                   <button (click)="filter$(false,'land_success')" > <strong>False</strong></button>
+                </div>
+             </div>
+           
+            <!-- END: File Manager Menu -->
+        </div>
+        <div class="col-span-12 lg:col-span-9 xxl:col-span-10">
+            <div class="intro-y grid grid-cols-12 gap-6 mt-5">
+                <!-- BEGIN: Blog Layout -->
+                <div *ngFor="let article of _resdata;let i=index" class="intro-y col-span-12 md:col-span-6 xl:col-span-3 box" >
+                   
+                    <div class="p-5">
+                        <div class="h-40 xxl:h-56 image-fit">
+                            <img alt="Midone Tailwind HTML Admin Template" class="rounded-md" [src]="article?.links['mission_patch_small']">
+                        </div>
+                        <div  class="text-gray-700 mt-2">
+                           <div><strong style="color:black">Mission Ids</strong>
+                                <div style="padding-left: 1rem;" *ngIf="article.mission_id.length">
+                                    <ul>
+                                        <li *ngFor="let _id of article?.mission_id;let j=index">{{_id}}</li>
+                                    </ul>
+                                </div>
+                                <div style="padding-left: 1rem;" *ngIf="!article.mission_id.length">
+                                    No mission Id exists
+                                </div>
+                            </div>
+                             
+                        </div>
+                        <div class="w-full text-gray-600 text-xs sm:text-sm">
+                            <div class="mr-2"> <strong style="color:black">year: </strong>  <span class="font-medium">{{article?.launch_year}}</span> </div>
+                            <div class="mr-2"><strong style="color:black">  Successfull Launch: </strong>  <span class="font-medium">{{article?.launch_success}}</span> </div>
+                            <div class="ml-auto"> <strong style="color:black"> Successfull Landing: </strong>  <span class="font-medium">{{article?.tbd}}</span> </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                
+               
+                <!-- END: Blog Layout -->
+                <!-- BEGIN: Pagination -->
+                <!-- <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-no-wrap items-center">
+                    <ul class="pagination">
+                        <li>
+                            <a class="pagination__link" href=""> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-left w-4 h-4"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg> </a>
+                        </li>
+                        <li>
+                            <a class="pagination__link" href=""> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left w-4 h-4"><polyline points="15 18 9 12 15 6"></polyline></svg> </a>
+                        </li>
+                        <li> <a class="pagination__link" href="">...</a> </li>
+                        <li> <a class="pagination__link" href="">1</a> </li>
+                        <li> <a class="pagination__link pagination__link--active" href="">2</a> </li>
+                        <li> <a class="pagination__link" href="">3</a> </li>
+                        <li> <a class="pagination__link" href="">...</a> </li>
+                        <li>
+                            <a class="pagination__link" href=""> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right w-4 h-4"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
+                        </li>
+                        <li>
+                            <a class="pagination__link" href=""> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-right w-4 h-4"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg> </a>
+                        </li>
+                    </ul>
+                    <select class="w-20 input box mt-3 sm:mt-0">
+                        <option>10</option>
+                        <option>25</option>
+                        <option>35</option>
+                        <option>50</option>
+                    </select>
+                </div> -->
+                <!-- END: Pagination -->
+            </div>
+        </div>
+    </div>
+</div>
