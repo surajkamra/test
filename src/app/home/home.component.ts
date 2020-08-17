@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../_services/rest.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { LoaderService } from '../_services/loader.service';
 
 @Component({
   selector: 'app-home',
@@ -10,16 +11,22 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   _years$=['2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020']
-  _resdata=[]
+  _resdata=[];
+  _isShowLoading:boolean
   constructor(private _restService:RestService,
               private router:Router,
+              private _loaderService:LoaderService,
               private activatedRoute:ActivatedRoute) { 
                 this.activatedRoute.queryParams.subscribe(it=>{
-                  console.log(it);
+                    this.getData(this.router.url.split('?')[1]);
                 })
+               
               }
 
   ngOnInit(): void {
+    this._loaderService.isLoading.subscribe(it=>{
+      this._isShowLoading=it;
+    })
     this.getData()
 
   }
@@ -47,7 +54,7 @@ export class HomeComponent implements OnInit {
         queryParams: queryParams, 
         queryParamsHandling: 'merge', // remove to replace all query params by provided
       });
-       this.getData(this.router.url.split('?')[1]);
+     
   }
   
 

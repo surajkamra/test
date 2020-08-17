@@ -39,6 +39,7 @@
             <!-- END: File Manager Menu -->
         </div>
         <div class="col-span-12 lg:col-span-9 xxl:col-span-10">
+            <div *ngIf="_isShowLoading" class="tp-loader spinner"></div>
             <div class="intro-y grid grid-cols-12 gap-6 mt-5">
                 <!-- BEGIN: Blog Layout -->
                 <div *ngFor="let article of _resdata;let i=index" class="intro-y col-span-12 md:col-span-6 xl:col-span-3 box" >
@@ -67,6 +68,11 @@
                         </div>
                     </div>
                     
+                </div>
+
+                <div *ngIf="!_resdata.length" class="class">
+                    No rows to show for the selected filter
+
                 </div>
                 
                 
