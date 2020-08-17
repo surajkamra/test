@@ -12,7 +12,8 @@ export class HomeComponent implements OnInit {
 
   _years$=['2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020']
   _resdata=[];
-  _isShowLoading:boolean
+  _isShowLoading:boolean;
+  qyeryParams:any={};
   constructor(private _restService:RestService,
               private router:Router,
               private _loaderService:LoaderService,
@@ -40,18 +41,14 @@ export class HomeComponent implements OnInit {
     )
   }
 
-  filter$(value$,qyery){
+  filter$(value$,qyery,isReset?:boolean){
     this.router.onSameUrlNavigation = 'reload';
-    let queryParams={
-     ...(qyery=='launch_year' && { launch_year: value$ }),
-     ...(qyery=='launch_success' && { launch_success: value$ }),
-     ...(qyery=='land_success' && { land_success: value$ }) 
-    }
+    isReset ? this.qyeryParams={launch_year:null,launch_success:null,land_success:null} : this.qyeryParams[qyery]=value$;
     this.router.navigate(
       ['/home'], 
       {
         relativeTo: this.activatedRoute,
-        queryParams: queryParams, 
+        queryParams: this.qyeryParams, 
         queryParamsHandling: 'merge', // remove to replace all query params by provided
       });
      

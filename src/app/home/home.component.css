@@ -42,10 +42,22 @@ body{
       -webkit-border-radius: 3px;
   }
   
-  button:focus{background-color:green;
-  width:100%}
+  /* button:focus{background-color:green;
+  } */
   
+.isSelected{
+  width:100%;
+  background-color:green;
+}
 
+strong{
+  color : white
+}
+
+.isUnSelected{
+  width:100%;
+  background-color:lightgreen;
+}
   ._noRows{
     text-align: center;
     margin-top: 25%;

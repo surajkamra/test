@@ -4,13 +4,14 @@
         <div class="col-span-12 lg:col-span-3 xxl:col-span-2" style="padding: 1rem;border-radius: 1rem;background: white;margin-top: 1rem;">
             <h2 class="intro-y text-lg font-medium mr-auto mt-2" >
                 Filters
+            <button (click)="filter$('','',true)" style="float: right; font-size: 10px;">Reset </button>
             </h2>
             <h6 class="intro-y text-lg  mr-auto mt-2" style="text-align: center;">
                 Launch Year
             </h6>
             <div class="grid grid-cols-12 gap-2 mt-2">
                 <div *ngFor="let year of _years$" class="intro-y col-span-6 sm:col-span-6 md:col-span-6 xxl:col-span-6 filter-button" style="text-align: center;">
-                   <button (click)="filter$(year,'launch_year')"> <strong>{{year}}</strong></button>
+                   <button (click)="filter$(year,'launch_year')" [ngClass]="{'isSelected':year==qyeryParams?.launch_year,'isUnSelected':year!=qyeryParams?.launch_year}"> <strong>{{year}}</strong></button>
                 </div>
             </div>
             <h6 class="intro-y text-lg  mr-auto mt-2" style="text-align: center;">
@@ -18,10 +19,10 @@
             </h6>
             <div class="grid grid-cols-12 gap-2 mt-2">
                 <div class="intro-y col-span-6 sm:col-span-6 md:col-span-6 xxl:col-span-6 filter-button" style="text-align: center;">
-                    <button (click)="filter$(true,'launch_success')"><strong>True</strong></button>
+                    <button (click)="filter$('true','launch_success')" [ngClass]="{'isSelected':qyeryParams?.launch_success=='true','isUnSelected':qyeryParams?.launch_success=='false'}"><strong>True</strong></button>
                 </div>
                 <div class="intro-y col-span-6 sm:col-span-6 md:col-span-6 xxl:col-span-6 filter-button" style="text-align: center;">
-                    <button (click)="filter$(false,'launch_success')"><strong>False</strong></button>
+                    <button (click)="filter$('false','launch_success')" [ngClass]="{'isSelected':qyeryParams?.launch_success=='false','isUnSelected':qyeryParams?.launch_success=='true'}"><strong>False</strong></button>
                 </div>
             </div>
             <h6 class="intro-y text-lg  mr-auto mt-2" style="text-align: center;">
@@ -29,10 +30,10 @@
              </h6>
              <div class="grid grid-cols-12 gap-2 mt-2">
                  <div class="intro-y col-span-6 sm:col-span-6 md:col-span-6 xxl:col-span-6 filter-button" style="text-align: center;">
-                    <button (click)="filter$(true,'land_success')"> <strong>True</strong></button>
+                    <button (click)="filter$('true','land_success')" [ngClass]="{'isSelected':qyeryParams?.land_success=='true','isUnSelected':qyeryParams?.land_success=='false'}"> <strong>True</strong></button>
                  </div>
                  <div class="intro-y col-span-6 sm:col-span-6 md:col-span-6 xxl:col-span-6 filter-button" style="text-align: center;">
-                   <button (click)="filter$(false,'land_success')" > <strong>False</strong></button>
+                   <button (click)="filter$('false','land_success')" [ngClass]="{'isSelected':qyeryParams?.land_success=='false','isUnSelected':qyeryParams?.land_success=='true'}" > <strong>False</strong></button>
                 </div>
              </div>
            
