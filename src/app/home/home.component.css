@@ -9,12 +9,10 @@ h6{
 }
 
 button{
-    outline:none
+    outline:none;
 }
 
-button :hover{
-    background-color:green;
-}
+
 
 body{
     background: black
@@ -44,7 +42,14 @@ body{
       -webkit-border-radius: 3px;
   }
   
+  button:focus{background-color:green;
+  width:100%}
   
+
+  ._noRows{
+    text-align: center;
+    margin-top: 25%;
+  }
   
   @-webkit-keyframes tp-rotateplane {
     0% { -webkit-transform: perspective(120px) }

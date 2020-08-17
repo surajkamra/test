@@ -64,16 +64,13 @@
                         <div class="w-full text-gray-600 text-xs sm:text-sm">
                             <div class="mr-2"> <strong style="color:black">year: </strong>  <span class="font-medium">{{article?.launch_year}}</span> </div>
                             <div class="mr-2"><strong style="color:black">  Successfull Launch: </strong>  <span class="font-medium">{{article?.launch_success}}</span> </div>
-                            <div class="ml-auto"> <strong style="color:black"> Successfull Landing: </strong>  <span class="font-medium">{{article?.tbd}}</span> </div>
+                            <div class="ml-auto"> <strong style="color:black"> Successfull Landing: </strong>  <span class="font-medium">{{article?.rocket.first_stage && article?.rocket.first_stage.cores[0].land_success}}</span> </div>
                         </div>
                     </div>
                     
                 </div>
 
-                <div *ngIf="!_resdata.length" class="class">
-                    No rows to show for the selected filter
-
-                </div>
+                
                 
                 
                
@@ -107,6 +104,10 @@
                     </select>
                 </div> -->
                 <!-- END: Pagination -->
+            </div>
+            <div *ngIf="!_resdata.length && !_isShowLoading" class="_noRows">
+                No rows to show for the selected filter
+
             </div>
         </div>
     </div>
