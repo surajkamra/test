@@ -23,7 +23,7 @@ export class RestService {
       private router: Router,
       
   ) {
-      this.apiUrl ='https://api.spaceXdata.com/v3/launches?limit=100&amp;';
+      this.apiUrl ='https://api.spaceXdata.com/v3/launches?limit=100&';
       this.httpOptions = {
           headers: new HttpHeaders({
               'Content-Type': 'application/json'

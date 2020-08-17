@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
     let queryParams={
      ...(qyery=='launch_year' && { launch_year: value$ }),
      ...(qyery=='launch_success' && { launch_success: value$ }),
-     ...(qyery=='land_success' && { year: value$ }) 
+     ...(qyery=='land_success' && { land_success: value$ }) 
     }
     this.router.navigate(
       ['/home'], 
