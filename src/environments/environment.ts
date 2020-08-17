@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BASE_API_ENDPOINT:'https://api.spaceXdata.com/v3/launches?limit=100&amp;'
+  BASE_API_ENDPOINT:''
 };
 
 /*

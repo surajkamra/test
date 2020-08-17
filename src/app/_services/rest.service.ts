@@ -4,7 +4,6 @@ import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment';
 
 
 
@@ -24,7 +23,7 @@ export class RestService {
       private router: Router,
       
   ) {
-      this.apiUrl = environment.BASE_API_ENDPOINT;
+      this.apiUrl ='https://api.spaceXdata.com/v3/launches?limit=100&amp;';
       this.httpOptions = {
           headers: new HttpHeaders({
               'Content-Type': 'application/json'
